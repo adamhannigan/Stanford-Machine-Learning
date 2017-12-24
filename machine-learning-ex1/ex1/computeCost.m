@@ -13,7 +13,14 @@ J = 0;
 % Instructions: Compute the cost of a particular choice of theta
 %               You should set J to the cost.
 
-
+% Get the hypothesis outcome for each input
+predictions = X * theta;
+% Calculate the hypothesis
+Hx = (predictions - y);
+% Add together all of the calculations
+sumOfAll = sum(Hx.^2);
+% Now apply fraction that equalizes result
+J = 1/(2 * m) * sumOfAll;
 
 
 

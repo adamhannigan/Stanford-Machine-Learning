@@ -5,9 +5,11 @@ function [X_norm, mu, sigma] = featureNormalize(X)
 %   is 1. This is often a good preprocessing step to do when
 %   working with learning algorithms.
 
-% You need to set these values correctly
+n = size(X, 2);
+m = size(X, 1);
+
 X_norm = X;
-mu = zeros(1, size(X, 2));
+mu = zeros(1, n);
 sigma = zeros(1, size(X, 2));
 
 % ====================== YOUR CODE HERE ======================
@@ -26,12 +28,17 @@ sigma = zeros(1, size(X, 2));
 % Hint: You might find the 'mean' and 'std' functions useful.
 %       
 
+% Create vector of mean values of each feature
+mu = mean(X)
+% Create vector with standard deviation of each feature
+sigma = std(X)
 
 
-
-
-
-
+for col = 1:n
+    % Dont need inner loop since we can perform element-wise subtraction
+    xMinusMean = X(:, col) - mu(col);
+    X_norm(:, col) = xMinusMean / sigma(col);
+end
 
 
 % ============================================================

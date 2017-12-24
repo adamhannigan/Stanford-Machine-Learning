@@ -46,6 +46,7 @@ m = length(y); % number of training examples
 % Note: You have to complete the code in plotData.m
 plotData(X, y);
 
+
 fprintf('Program paused. Press enter to continue.\n');
 pause;
 

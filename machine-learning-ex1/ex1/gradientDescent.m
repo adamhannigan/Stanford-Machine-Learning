@@ -17,17 +17,20 @@ for iter = 1:num_iters
     %       of the cost function (computeCost) and gradient here.
     %
 
+    % Get the x value, first column is padded 1
+    x = X(:, 2);
+    % Calculate hypothesis O1 + 02x
+    h = theta(1) + (theta(2)*x);
 
+    % Update theta's synchronously
+    theta0 = theta(1) - alpha * (1/m) * sum(h - y);
+    theta1 = theta(2) - alpha * (1/m) * sum((h - y) .* x);
 
-
-
-
-
+    theta = [theta0; theta1];
     % ============================================================
 
     % Save the cost J in every iteration    
     J_history(iter) = computeCost(X, y, theta);
-
 end
 
 end

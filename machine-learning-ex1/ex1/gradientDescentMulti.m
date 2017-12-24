@@ -5,6 +5,7 @@ function [theta, J_history] = gradientDescentMulti(X, y, theta, alpha, num_iters
 
 % Initialize some useful values
 m = length(y); % number of training examples
+n =  size(X, 2);
 J_history = zeros(num_iters, 1);
 
 for iter = 1:num_iters
@@ -17,15 +18,20 @@ for iter = 1:num_iters
     %       of the cost function (computeCostMulti) and gradient here.
     %
 
+    %create temp to store previous value
+    previous_theta = theta;
 
+    for i = 1:n
+        x = X(:, i);
+        % ====================== GOT STUCK ON THIS ======================
+        % Hint: Order of matrix multiplication is very important!
+        %
+        hypothesis = X * previous_theta;
 
+        derivative = (1 / m) * (hypothesis - y)' * x;
 
-
-
-
-
-
-
+        theta(i) = previous_theta(i) - (alpha * derivative);
+    end;
 
     % ============================================================
 
