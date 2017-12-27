@@ -12,12 +12,14 @@ figure; hold on;
 %               examples and 'ko' for the negative examples.
 %
 
+% get indices of accepted and rejected
+accepted = find(y == 1);
+rejected = find(y == 0);
 
-
-
-
-
-
+plot(X(accepted, 1), X(accepted, 2), 'k+','LineWidth', 2, ...
+     'MarkerSize', 7);
+plot(X(rejected, 1), X(rejected, 2), 'ko', 'MarkerFaceColor', 'y', ...
+     'MarkerSize', 7);
 
 
 % =========================================================================

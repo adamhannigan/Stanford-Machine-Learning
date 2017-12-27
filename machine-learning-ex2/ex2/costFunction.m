@@ -20,7 +20,27 @@ grad = zeros(size(theta));
 % Note: grad should have the same dimensions as theta
 %
 
+numberOfFeatures = length(theta);
 
+for featureIndex = 1:numberOfFeatures
+
+end
+
+% dont need to transpose since theta in that format
+% REMEBER order matters
+hypothesis = sigmoid(X * theta);
+
+positivePrediction = -y' * log(hypothesis);
+negativePrediction = (1 - y)' * log(1 - hypothesis);
+
+% if we are looking for positives (y = 1) only the postive prediction will run
+% if y = 0 only negative prediction will run
+logisticPrediction =  positivePrediction - negativePrediction;
+% dont need sum/iterations since equation is vectorized
+J = (1 / m) * logisticPrediction;
+
+% Vectorized
+grad = (1 / m) * (X'*(hypothesis - y));
 
 
 
