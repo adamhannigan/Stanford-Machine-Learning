@@ -30,11 +30,12 @@ X = [ones(m, 1) X];
 %       for each row.
 %       
 
-
-
-
-
-
+% set action multiplier as X inputs
+z = X * all_theta';
+h = sigmoid(z);
+% get the max value - interested in the index since using one vs all classification
+[x, ix] = max (h, [], 2)
+p = ix;
 
 % =========================================================================
 

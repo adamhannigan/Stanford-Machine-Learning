@@ -37,7 +37,18 @@ grad = zeros(size(theta));
 %
 
 
+% a(T) * b = b(T) * a
 
+% exclude bias 
+theta1 = [0 ; theta(2:size(theta), :)];
+
+predictions = sigmoid(X * theta);
+cost = (-y)' * log(predictions) - (1 - y)' * log(1 - predictions);
+reg = (lambda / (2 * m)) * (theta1' * theta1);
+J = (1/m) * cost + reg;
+
+
+grad = (1 / m) * (X' * (predictions - y) + lambda * theta1);
 
 
 
