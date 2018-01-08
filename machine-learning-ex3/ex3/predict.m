@@ -21,7 +21,17 @@ p = zeros(size(X, 1), 1);
 %       can use max(A, [], 2) to obtain the max for each row.
 %
 
+X = [ones(m, 1) X];
 
+for i=1:m
+    inputLayer = X(i,:)';
+    % Bias unit
+    activation1 = [1; sigmoid(Theta1 * inputLayer)];
+    outputLayer = sigmoid(Theta2 * activation1);
+    % Predict one vs all (use the index of the highest value)
+    [m, idx] = max(outputLayer');
+    p(i) = idx;
+end;
 
 
 
